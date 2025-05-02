@@ -11,16 +11,23 @@ addButton.addEventListener('click', function () {
   const todoText = todoInput.value;
 
   // create a new list item
-  const listItem = document.createElement('li'); //<li></li>
+  const listItem = document.createElement('li'); //<li></li>7
+  const divContainer = document.createElement('div'); //<div></div>
   listItem.className = 'todo-item'; //<li class="todo-item"></li>
   listItem.textContent = todoText; // <li>...</li>
+
+  // create a checkbox
+  const checkbox = document.createElement('input'); //<input>
+  checkbox.type = 'checkbox'; //<input type="checkbox">
 
   // create a delete button
   const deleteButton = document.createElement('button'); //<button></button>
   deleteButton.className = 'delete-button'; //<button class="delete-button"></button>
   deleteButton.textContent = 'Delete'; // <button>Delete</button>
 
-  listItem.appendChild(deleteButton); // <li>...</li><button>Delete</button>
+  divContainer.appendChild(checkbox); // <div>...</div><input type="checkbox"><li>...</li>
+  divContainer.appendChild(deleteButton); // <div>...</div><li>...</li>
+  listItem.appendChild(divContainer); // <li>...</li><input type="checkbox"><button>Delete</button>
 
   // add  the created list item to the todo list
   todoList.appendChild(listItem); // add the list item to the todo list
