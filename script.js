@@ -14,7 +14,9 @@ addButton.addEventListener('click', function () {
   const listItem = document.createElement('li'); //<li></li>7
   const divContainer = document.createElement('div'); //<div></div>
   listItem.className = 'todo-item'; //<li class="todo-item"></li>
-  listItem.textContent = todoText; // <li>...</li>
+
+  const span = document.createElement('span');
+  span.textContent = todoText;
 
   // create a checkbox
   const checkbox = document.createElement('input'); //<input>
@@ -27,6 +29,8 @@ addButton.addEventListener('click', function () {
 
   divContainer.appendChild(checkbox); // <div>...</div><input type="checkbox"><li>...</li>
   divContainer.appendChild(deleteButton); // <div>...</div><li>...</li>
+
+  listItem.appendChild(span);
   listItem.appendChild(divContainer); // <li>...</li><input type="checkbox"><button>Delete</button>
 
   // add  the created list item to the todo list
@@ -35,6 +39,15 @@ addButton.addEventListener('click', function () {
   deleteButton.addEventListener('click', function () {
     // remove the list item from the todo list
     todoList.removeChild(listItem); // remove the list item from the todo list
+  });
+
+  console.log(listItem);
+  checkbox.addEventListener('change', function () {
+    if (checkbox.checked) {
+      span.classList.add('completed');
+    } else {
+      span.classList.remove('completed');
+    }
   });
 
   todoInput.value = ''; // clear the input field
